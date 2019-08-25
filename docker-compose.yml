@@ -1,0 +1,16 @@
+##                                                            DOCKER COMPOSE FILE
+
+# This file is use to run and make changes easily to docker image from our local project directory.It helps maintain different services running for our project
+
+version: "3.3"
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
