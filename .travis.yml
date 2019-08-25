@@ -1,0 +1,23 @@
+##                                                      This is Travis-CI config file
+
+## travis-CI is a toolkit which is used make continuous integration i.e the practice of merging in small code changes frequently in a project development cycle
+## as a CI platform Travis-CI supports our development process by automatically building and testing code changes providing immediate feedback on the success and
+## failure via notification email..
+
+
+
+# We are mentioning travis-CI what is the programming language of our project
+language: python
+python:
+  - "3.6"
+
+# what service to start when a git commit and push is made to github..
+services:
+  - docker
+
+# what to do before any automation script test is run.
+before_script: pip install docker-compose
+
+# Scripts to run after
+script:
+  - docker-composer run app sh -c "python manage.py test && flake8"
